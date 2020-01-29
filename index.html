@@ -8,6 +8,706 @@
 	<h1 align="center">Juniper History</h1>
 	<p>Were you late? Are you sick? Have you been absent? Then you need the <strong>Juniper History</strong> website is the place for you!!!</p>
 	<a href="https://geekprank.com">Come here to view the past week of history note on the board.</a>
+	<p>Listen to some relaxing music as you get down your notes</p>
+	<p>One song is below</p>
+	<link rel="" id="canonical" href="">
+<link rel="shortcut icon" href="/images/favicon.ico" />
+    
+<!--old version-->
+<!--
+<script src="/js/jquery-ui-1.11.4.custom/external/jquery/jquery.js"></script>
+<script src="/js/jquery-ui-1.11.4.custom/external/jquery/jquery-migrate-1.3.0.min.js"></script>
+<script type="text/javascript" src="/js/jquery-ui-1.11.4.custom/jquery-ui.js"></script>
+-->
+    
+ <!--new version-->   
+
+ <script src="/js/jquery-3x/jquery/jquery-3.4.1.min.js"></script>   
+ <script src="/js/jquery-3x/jquery/jquery-migrate-3.0.1.js"></script>
+ <script src="/js/jquery-3x/jquery-ui.min.js"></script>
+    
+
+    
+    <script>
+        
+        function notEmpty(elem, helperMsg){
+	if(elem.value.length == 0){
+		alert(helperMsg);
+		elem.focus();
+		return false;
+	}
+	return true;
+}
+        
+        
+        var oldToggle = jQuery.fn.toggle;
+      jQuery.fn.toggle = function( fn, fn2 ) {
+  // Don't mess with animation or css toggles
+  if ( !jQuery.isFunction( fn ) || !jQuery.isFunction( fn2 ) ) {
+    return oldToggle.apply( this, arguments );
+  }
+  // migrateWarn("jQuery.fn.toggle(handler, handler...) is deprecated");
+  // Save reference to arguments for access in closure
+  var args = arguments,
+  guid = fn.guid || jQuery.guid++,
+  i = 0,
+  toggler = function( event ) {
+    // Figure out which function to execute
+    var lastToggle = ( jQuery._data( this, "lastToggle" + fn.guid ) || 0 ) % i;
+    jQuery._data( this, "lastToggle" + fn.guid, lastToggle + 1 );
+    // Make sure that clicks stop
+    event.preventDefault();
+    // and execute the function
+    return args[ lastToggle ].apply( this, arguments ) || false;
+  };
+  // link all the functions, so any of them can unbind this click handler
+  toggler.guid = guid;
+  while ( i < args.length ) {
+    args[ i++ ].guid = guid;
+  }
+  return this.on( "click", toggler );
+          
+};
+
+    </script>
+    
+<script type="text/javascript" src="/js/jquery-3x/jquery.form.js"></script>
+<script type="text/javascript" src="/js/jquery.cookie.js"></script>
+<script type="text/javascript" src="/js/default-jquery-update-h20191011.js"></script>
+<script type="text/javascript" src="/js/jquery.scrollTo.js"></script>
+<script type="text/javascript" src="/js/fsmenu_commented.js"></script>
+<script type="text/javascript" src="https://use.typekit.net/stu7gqt.js"></script>
+<script type="text/javascript">try{Typekit.load();}catch(e){}</script>
+
+ 
+<script type="text/javascript">
+var OK = "0";
+var pepper_url = "https://www.jwpepper.com"+window.location.pathname+location.search;
+$("#canonical").attr("href", pepper_url);
+$("#canonical").attr("rel", "canonical");
+var INVALID_EMAIL = "10";
+var INVALID_PASSWORD = "20";
+var NEW_REGISTRATION = "30";
+var ABUSER = "40";
+var isTest = false;
+$(
+	function () {
+
+		loadLogin();
+
+	//for facets on all departmental pages
+ $(".facet-heading").toggle(function(){  
+			$(this).parent().children(".facet-hide.shown").slideDown("slow");
+       		$(this).parent().children(".show").hide("slow");
+          	}, function () {
+				$(this).parent().children(".facet-hide").slideUp("slow");
+          		$(this).parent().children().children(".facet-hide").slideUp("slow");
+				$(this).parent(".facet-hide").slideUp("slow");
+				$(this).parent().children(".less").hide("slow");
+				$(this).parent().children(".more").hide("slow");
+				$(this).parent().children().children(".less").hide("slow");
+				$(this).parent().children(".more").hide("slow"); 		
+       	});
+			
+
+     	$(".show-filters").on("click" , function(){
+     		$(".dep-facets").toggle();
+			$("#facets").toggle();
+     	});
+     	$(".more").on("click" , function(){
+     				$(this).siblings("div.hidden").each(
+     						function(){
+     							$(this).parent().children(".facet-hide.hidden").css("display","block"),
+     							$(this).siblings(".less").css("display","block")
+     							$(this).siblings(".more").hide()
+ 					})
+ 					
+     			});
+     	$(".less").on("click" , function(){
+     				$(this).siblings("div.hidden").each(
+   							function(){
+     							$(this).parent().children(".facet-hide.hidden").css("display","none"),
+     							$(this).siblings(".more").css("display","block")
+     							$(this).siblings(".less").hide()
+     						})			
+     			});	
+	}
+);
+
+</script>
+
+
+
+<style type="text/css" media="all">
+	@import "/css/default.css";
+/*	@import "/js/jquery-ui-1.11.4.custom/jquery-ui.css";*/
+    @import "/js/jquery-ui-1.11.4.custom/jquery-ui.css";
+	@import "/css/global-s20190107.css";
+    .divRevokeBtn{
+        border-top-left-radius: .5em;
+        border-top-right-radius: .5em;
+        padding: 0.75em;
+        background-color: #410f18;
+        color:#fff;
+       
+    }
+  .ui-button-icon-only {
+        width: 2em;
+        box-sizing: border-box;
+        text-indent: -9999px;
+        white-space: nowrap;
+    }
+    
+    
+    
+    
+    
+    
+    /* TEMPORARY DOWNTIME BANNER */
+.downtime_banner {
+	display:none;
+}
+#downtime_banner {
+	background:#fea902;
+	position:fixed;
+	bottom:0;
+	height:20px;
+	width:100%;
+	opacity:.9;
+	display:none;
+	padding:2px 0;
+	left:0;
+	z-index:2000000;
+}
+
+#downtime_banner p {
+	font-size:12px;
+	text-align:center;
+	color:#000;
+	float:left;
+	padding:2px 0;
+				width: -moz-calc(100% - 61px);
+				width: -webkit-calc(100% - 61px);
+				width: calc(100% - 61px);
+}
+#downtime_banner p span {
+	font-weight:600;
+}
+
+.cautionicon {
+	width:21px;
+	float:left;
+	margin-left:10px;
+}
+
+.brformobile {
+	display:none;
+}
+
+.closeforsession {
+	float:right;
+	margin-right:10px;
+	width:15px;
+	margin-top:3px;
+}
+
+	@media only screen and (max-width: 850px) {
+			
+		#downtime_banner p {
+			font-size:10px;
+		}
+		#downtime_banner {
+			height:auto;
+		}
+		.brformobile {
+			display:block;
+		}
+		.cautionicon {
+			margin-top:8px;
+		}
+		.closeforsession {
+			margin-top:9px;
+		}
+	}
+    @media only screen and (max-width: 420px) {
+    		.cautionicon {
+    			display:none;
+    		}
+    		#downtime_banner p {
+    			width: -moz-calc(100% - 20px);
+				width: -webkit-calc(100% - 20px);
+				width: calc(100% - 20px);
+    			float:right;
+    		}
+    		.closeforsession {
+    			float:left;
+    			margin:9px 2px 0 3px;
+    		}
+    		
+    		
+    }
+    /* TEMPORARY DOWNTIME BANNER */
+   
+    
+</style>
+<!--[if IE]><link rel="stylesheet" href="/css/ie.css?v=1.1" type="text/css" media="screen" /><![endif]-->
+
+
+    
+  
+    
+    
+    
+    <!--GDPR-->
+    <div id="revokBtnParent"></div>
+ 
+    <script type="text/javascript" src="/js/badwolf.js"></script>
+ 
+    
+<!--end of GDPR-->
+   
+    
+
+    
+
+
+
+<style> 
+	@import "/css/newdownloads.css";
+</style>
+
+<style type="text/css">
+.dkMP3 {
+	box-shadow: 1px 2px 2px 2px #555;
+	margin: 10px auto;
+	padding: 1%;
+	width: 58%;
+}
+
+.dkmp3 img {
+	width: 100%;
+}
+
+.dkmp3 audio {
+	width: 100%;
+}
+
+.dkMP3 span {
+	color: #555555;
+	display: inline-block;
+	font-family: "open-sans";
+	font-size: 1.1em;
+	font-weight: 600;
+	padding: 2px 0;
+}
+
+
+
+
+
+
+
+
+body {
+height:100%;
+background: rgba(237,237,237,1);
+background: -moz-linear-gradient(top, rgba(237,237,237,1) 0%, rgba(246,246,246,1) 53%, rgba(255,255,255,1) 100%);
+background: -webkit-gradient(left top, left bottom, color-stop(0%, rgba(237,237,237,1)), color-stop(53%, rgba(246,246,246,1)), color-stop(100%, rgba(255,255,255,1)));
+background: -webkit-linear-gradient(top, rgba(237,237,237,1) 0%, rgba(246,246,246,1) 53%, rgba(255,255,255,1) 100%);
+background: -o-linear-gradient(top, rgba(237,237,237,1) 0%, rgba(246,246,246,1) 53%, rgba(255,255,255,1) 100%);
+background: -ms-linear-gradient(top, rgba(237,237,237,1) 0%, rgba(246,246,246,1) 53%, rgba(255,255,255,1) 100%);
+background: linear-gradient(to bottom, rgba(237,237,237,1) 0%, rgba(246,246,246,1) 53%, rgba(255,255,255,1) 100%);
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ededed', endColorstr='#ffffff', GradientType=0 );
+
+}
+
+#mylibraryAudioPlayer {
+    border: 1px solid #000;
+    box-shadow: none;
+    margin: 10px auto;
+    padding: 0;
+    position: relative;
+    width: 95% !important;
+    background:#fff !important;
+}
+
+.coverbg {
+	background:#333;
+	width:100%;
+	text-align:center;
+	padding:15px 0;
+}
+
+#mylibraryAudioPlayer .mp-coverimg {
+	width:200px;
+	margin:0 auto;
+}
+p.titleanddetail {
+	font-size:16px;
+	margin-left:20px;
+}
+
+.titleanddetail span {
+	font-weight:400;
+}
+
+.titleanddetail .titletag {
+	font-weight:100;
+	font-size:14px;
+}
+.titleanddetail .actualtitle {
+	
+}
+.title,
+#pButton, 
+.previousButton,
+.nextButton,
+.currentTime, 
+#timeline,
+#volume_icon,
+.trackDuration {
+	float:left;
+}
+.currentTime,
+.trackDuration {
+	margin:2px 4px;
+	color:#d1d1d1 !important;
+}
+#volume_icon {
+	width:20px;
+	height:20px;
+	margin:1px 4px;
+}
+
+#playhead {
+	height:20px;
+	width:50%;
+}
+#volumeBar {
+  width: 50px;
+  height: 20px;
+  float: left;
+  background: #d1d1d1;
+  position: relative;
+}
+#volumeSet {
+	height:20px;
+}
+
+#timeline {
+	
+	background:#d1d1d1;
+				width: -moz-calc(100% - 165px);
+				width: -webkit-calc(100% - 165px);
+				width: calc(100% - 165px);
+}
+
+#mylibraryAudioPlayer > div#audioPlayer {
+	background:#333 ;
+	background-color: #333 ;
+	height:24px;
+	/* overflow:hidden; */
+	border-radius:0px;
+	position:relative;
+	margin-top:10px;
+	padding:2px 0 1px;
+	
+	float:left;
+	width:100%;
+	margin-bottom:10px;
+}
+#timeline, #volumeBar {
+	margin-top:1px;
+}
+#mylibraryAudioPlayer_controlbar .jwplay button, 
+#mylibraryAudioPlayer .play, .play {
+	background: url("https://d2fizz4npx5v6x.cloudfront.net//images/mlaudioplay_transparent2.png") no-repeat scroll center center !important; 
+	background-size:18px 18px !important;
+		height:24px !important;
+	width:24px !important;
+	
+	border:0;
+}
+
+#mylibraryAudioPlayer_controlbar .jwplay.jwtoggle button, 
+#mylibraryAudioPlayer .pause, .pause {
+	background: url("https://d2fizz4npx5v6x.cloudfront.net//images/mlaudiopause_transparent2.png") no-repeat scroll center center !important;
+	background-size:18px 18px !important;
+		height:24px !important;
+	width:24px !important;
+	
+	border:0;
+}
+#mylibraryAudioPlayer_controlbar .jwmute button, 
+#volume_icon {
+	background: url("https://d2fizz4npx5v6x.cloudfront.net//images/mlaudioon_transparent2.png") no-repeat scroll center center / 20px 15px !important; 
+}
+
+#volume_icon.muted {
+	background:url("https://d2fizz4npx5v6x.cloudfront.net//images/mlaudiooff_transparent.png") no-repeat scroll center center / 20px 15px !important;
+}
+
+#playhead,
+#volumeSet {
+	background:#999;
+}
+#audioPlayer .trackDuration,
+#audioPlayer .currentTime {
+	font-size:10px;
+}
+#playhead {
+	width:1px;
+}
+
+
+
+.pp-tracklist {
+	background:#333;
+	border-top:1px solid #999;
+	width:100%;
+	height:auto;
+	padding:10px 0 200px;
+	float:left;
+}
+
+.pp-listitem {
+	width:100%;
+	padding:10px 0;
+	float:left;
+	background:#e1e1e1;
+	margin-top:1px;
+}
+.pp-listitem.hover {
+	background:#cccccc;
+	-webkit-transition: background 0.2s linear;
+    -moz-transition: background 0.2s linear;
+    -ms-transition: background 0.2s linear;
+    -o-transition: background 0.2s linear;
+    transition: background 0.2s linear;
+    cursor:pointer;
+}
+
+.pp-listitem.pp-active {
+	background:#cccccc;
+}
+
+.pp-tracktitle-p {
+	color:#0066cc;
+	font-weight:600;
+}
+
+.pp-playicon {
+	width:28px;
+	height:28px;
+	background:url('https://d2fizz4npx5v6x.cloudfront.net//images/pp-videoplaybuttn.png') no-repeat;
+	float:left;
+	background-size:28px 28px;
+	margin:8px 10px 0 20px;
+	opacity:.8;
+}
+
+.pp-listitem.hover .pp-playicon{
+	opacity:.9;
+}
+
+button:focus, div,
+#volume_icon, #volumeBar,
+#volumeSet, #pButton {outline:0;}
+
+#pytp-youtubecontrols {
+	height:24px;
+	background:#333;
+	overflow:hidden;
+}
+
+iframe#pytp-youtubeframe {
+	width:100%;
+	height: -moz-calc(100vh - 24px);
+	height: -webkit-calc(100vh - 24px);
+	height: calc(100vh - 24px); 
+}
+
+.pp-loading {
+	position:fixed;
+	top:50%;
+	left:50%;
+	z-index:100000;
+	background:trasparent;
+	margin-left:-30px;
+	margin-top:-30px;
+}
+.playerspin {
+	width:60px;
+	height:60px;
+}
+
+
+
+
+</style>
+
+<script type="text/javascript">
+	$( function() {
+			if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
+				$("<link rel='stylesheet' type='text/css' href='/css/pepperplayermobile.css' />").appendTo( 'head' );
+			} else { 
+	    }	
+	});
+	$( function() {
+			if( /iPhone|webOS/i.test(navigator.userAgent) ) {
+				$("<style type='text/css'>#pytp-youtubecontrols{display:none !important;}</style>").appendTo( 'head' );
+			} else { 
+	    }	
+	});
+</script>
+
+
+</head>
+<body>
+	<div id="pagename" style="display: none;">J:Media Player</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div id="mylibraryAudioPlayer" class="dkMP3">
+	<div class="coverbg">
+		<img class="mp-coverimg" src="/covers/1/10908701.jpg" alt="" />
+	</div>
+	
+	<br /> 
+	
+	<p class="titleanddetail">
+		<span class="titletag">Title:</span> <span class="actualtitle">Treasure Island</span>
+		<br /> 	
+		<span class="titletag">Detail:</span> <span class="actualtitle">String Orchestra&nbsp;</span>
+	</p>
+	<br />
+	
+	
+	
+	
+	 <div id="audioPlayer"></div>
+	 
+	
+</div>
+
+<div id="pp-loadinganimation" class="pp-loading" >
+	<img class="playerspin" src="https://d2fizz4npx5v6x.cloudfront.net/images/pepperplayer-spinner.gif">
+</div>
+
+
+
+
+
+
+
+
+
+<script type="text/javascript" src="/js/pepperPlayer.js"></script>
+<script>
+	 var player = pepperPlayer("audioPlayer");
+	 player.setup({
+		 playList: [{
+			 title : "happiness",
+			 file: "https://d2fizz4npx5v6x.cloudfront.net/audio/10908701.mp3"
+		 }],
+		 index : '-1',
+		 autoplay : false
+	 });
+//	 Test for Chrome - work around Chrome's 2018 autoplay update which interfered with media player (web-6579 2019-01-28 rmr)	 
+	 var isChrome = /Chrome/.test(navigator.userAgent) && /Google Inc/.test(navigator.vendor);
+	 if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
+		var playButton = document.getElementById("pButton");
+		playButton.className = "";
+		playButton.className = "play";
+	 } else if (isChrome) {
+		var chromePlayButton = document.getElementById("pButton");
+		chromePlayButton.className = "";
+		chromePlayButton.className = "play";
+	 } else { 
+		document.getElementById("pButton").click();
+	 }
+	 
+	 player.audioPlayer.addEventListener('waiting', function() {
+		 $(".pp-loading").show();
+	 });
+	 
+	 player.audioPlayer.addEventListener('stalled', function() {
+		 $(".pp-loading").show();
+	 });
+	 	 
+	 player.audioPlayer.addEventListener('seeked', function() {
+		 $(".pp-loading").hide();
+	 });
+	 
+	 player.audioPlayer.addEventListener('play', function() {
+		 $(".pp-loading").hide();
+	 });
+	 
+	 player.audioPlayer.addEventListener('canplay', function() {
+		 $(".pp-loading").hide();
+	 });
+	 
+	 player.audioPlayer.addEventListener('canplaythrough', function() {
+		 $(".pp-loading").hide();
+	 });
+
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script type="text/javascript">
+setTimeout(function(){var a=document.createElement("script");
+var b=document.getElementsByTagName("script")[0];
+a.src=document.location.protocol+"//dnn506yrbagrg.cloudfront.net/pages/scripts/0022/1321.js?"+Math.floor(new Date().getTime()/3600000);
+a.async=true;a.type="text/javascript";b.parentNode.insertBefore(a,b);}, 1);
+</script>
+<script type="text/javascript">
+  var thispagename = document.getElementById("pagename").innerHTML;
+  ga('set', 'contentGroup1', thispagename); 
+  ga('send', 'pageview');
+  
+	$( ".pp-listitem" ).hover(
+			  function() {
+			    $( this ).addClass( "hover" );
+			  }, function() {
+			    $( this ).removeClass( "hover" );
+			  }
+			);
+  
+  </script>
 </body>
 
 </html>
